@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>project.springboot</groupId>
-	<artifactId>todo-app</artifactId>
+	<artifactId>ecom-backend-poc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>todo-app</name>
 	<description>todo app project in Spring Boot</description>

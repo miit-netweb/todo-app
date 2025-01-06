@@ -1,4 +1,4 @@
-package project.springboot.todo_app.controller;
+package project.springboot.ecom.controller;
 
 import org.springframework.web.bind.annotation.*;
 
