@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import project.springboot.ecom.entity.Product;
+import project.springboot.ecom.entity.ProductDto;
 import project.springboot.ecom.services.ProductService;
 
 
@@ -30,39 +31,34 @@ public class ProductController {
 
     @PostMapping("/save")
     public ResponseEntity<Product> saveEntry(
-                                            @RequestParam("id") String id,
-                                            @RequestParam("title") String title,
-                                            @RequestParam("content") String content,
-                                            @RequestParam("price") float price,
-                                            @RequestParam("stock") int stock,
-                                            @RequestParam("image")MultipartFile image){
-        Product product = new Product();
-
-        try {
-            String originalFilename = image.getOriginalFilename();
-            String uniqueFileName = UUID.randomUUID() + "_" + originalFilename;
-
-            String uploadDir = new File("src/main/resources/uploads/").getAbsolutePath();
-            File directory = new File(uploadDir);
-            if (!directory.exists()) {
-                directory.mkdirs();
-            }
-            File file = new File(uniqueFileName);
-            image.transferTo(file);
-
-            product.setId(id);
-            product.setTitle(title);
-            product.setContent(content);
-            product.setPrice(price);
-            product.setStock(stock);
-            product.setImage(uniqueFileName);
-
-            productService.saveProduct(product);
-
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to upload image", e);
-        }
-        return new ResponseEntity<>(product,HttpStatus.OK);
+            ProductDto product){
+//        Product product = new Product();
+        System.out.println(product.getImage());
+//        try {
+//            String originalFilename = image.getOriginalFilename();
+//            String uniqueFileName = UUID.randomUUID() + "_" + originalFilename;
+//
+//            String uploadDir = new File("src/main/resources/uploads/").getAbsolutePath();
+//            File directory = new File(uploadDir);
+//            if (!directory.exists()) {
+//                directory.mkdirs();
+//            }
+//            File file = new File(uniqueFileName);
+//            image.transferTo(file);
+//
+//            product.setId(id);
+//            product.setTitle(title);
+//            product.setContent(content);
+//            product.setPrice(price);
+//            product.setStock(stock);
+//            product.setImage(uniqueFileName);
+//
+//            productService.saveProduct(product);
+//
+//        } catch (IOException e) {
+//            throw new RuntimeException("Failed to upload image", e);
+//        }
+        return new ResponseEntity<>(null,HttpStatus.OK);
     }
 
     @GetMapping("/get/{id}")
