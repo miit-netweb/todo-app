@@ -88,6 +88,7 @@ public class ProductController {
             product1.setPrice(product.getPrice());
             product1.setStock(product.getStock());
             product1.setImage(uniqueFileName);
+            product1.setQuantity(0);
 
             productService.saveProduct(product1);
 

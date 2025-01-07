@@ -16,6 +16,24 @@ public class Product {
     private String image;
     private float price;
     private int stock;
+    private int quantity;
+
+    public Product() {
+    }
+
+    public Product(String id, float price, int quantity) {
+        this.id = id;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public String getId() {
         return id;
