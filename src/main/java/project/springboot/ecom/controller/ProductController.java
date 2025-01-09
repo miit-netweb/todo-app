@@ -4,6 +4,9 @@ package project.springboot.ecom.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.Resource;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +35,7 @@ public class ProductController {
     ProductService productService;
 
     private String saveImage(MultipartFile file) throws IOException {
-        Path uploadPath = Paths.get("D:\\React\\todo-app\\target\\classes\\uploads");
+        Path uploadPath = Paths.get("D:\\REACT-SpringBoot POC\\todo-app\\target\\classes\\uploads");
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
@@ -109,6 +112,12 @@ public class ProductController {
         return new ResponseEntity<>("No product was found",HttpStatus.NOT_FOUND);
     }
 
+
+    @GetMapping("/page/product")
+    public ResponseEntity<Page<Product>> getEmployeesPage(@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "10") int size) {
+        Pageable pageable = PageRequest.of(page, size);
+        return ResponseEntity.ok(productService.getAllProduct(pageable));
+    }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<?> updateJournal(

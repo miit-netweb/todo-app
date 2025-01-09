@@ -1,12 +1,15 @@
 package project.springboot.ecom.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import org.springframework.web.multipart.MultipartFile;
 import project.springboot.ecom.entity.Product;
 
 import project.springboot.ecom.repository.ProductRepo;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -50,6 +53,10 @@ public class ProductService
             e.printStackTrace();
             return "Error saving image";
         }
+    }
+
+    public Page<Product> getAllProduct(Pageable pageable){
+        return productRepo.findAll(pageable);
     }
 
 

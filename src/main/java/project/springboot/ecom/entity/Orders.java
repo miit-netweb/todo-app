@@ -1,8 +1,6 @@
 package project.springboot.ecom.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.*;
 
 import java.util.List;
 
@@ -11,7 +9,7 @@ public class Orders {
 
     @Id
     private String id;
-    @OneToMany
+    @OneToMany(mappedBy = "id")
     private List<Product> products;
     private String name;
     private String number;

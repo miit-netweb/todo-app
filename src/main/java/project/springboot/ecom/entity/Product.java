@@ -21,8 +21,9 @@ public class Product {
     public Product() {
     }
 
-    public Product(String id, float price, int quantity) {
+    public Product(String id, String title,float price, int quantity) {
         this.id = id;
+        this.title = title;
         this.price = price;
         this.quantity = quantity;
     }
